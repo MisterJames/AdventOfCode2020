@@ -10,9 +10,12 @@ namespace AoC2020
     public class Day02b
     {
         // find the passwords that match the policy on the given line
+        // only one char in either location
+        // if in both or neither, it's missing
+
         // 1-3 a: abcde             valid
         // 1-3 b: cdefg             invalid
-        // 2-9 c: ccccccccc         valid
+        // 2-9 c: ccccccccc         invalid
 
         public string SolvePuzzle(string puzzleData)
         {
