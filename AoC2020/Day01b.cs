@@ -8,7 +8,7 @@ namespace AoC2020
 {
     public class Day01b
     {
-        // Find the two entries that sum to 2020 and then multiply those two numbers together.
+        // Find the three entries that sum to 2020 and then multiply those numbers together.
 
         public string SolvePuzzle(string puzzleData)
         {

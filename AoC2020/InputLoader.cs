@@ -18,8 +18,7 @@ namespace AoC2020
             var handler = new HttpClientHandler() { CookieContainer = cookieContainer };
 
             _client = new HttpClient(handler) { BaseAddress = baseAddress };
-            cookieContainer.Add(baseAddress, new Cookie("_ga", settings.Ga));
-            cookieContainer.Add(baseAddress, new Cookie("_gid", settings.Gid));
+
             cookieContainer.Add(baseAddress, new Cookie("session", settings.Session));
 
         }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AoC2020
 {
-    public class Day02
+    public class Day02b
     {
         // find the passwords that match the policy on the given line
         // 1-3 a: abcde             valid
@@ -34,17 +34,13 @@ namespace AoC2020
             (int min, int max) range = BuildRange(minmax.Split("-"));
             var theChar = character.Replace(":","");
 
-            var count = 0;
+            var minMatch = password[range.min-1] == theChar[0];
+            var maxMatch = password[range.max-1] == theChar[0];
 
-            for (int i = 0; i < password.Length; i++)
-            {
-                if (password[i] == theChar[0])
-                {
-                    count++;
-                }
-            }
+            if (minMatch && !maxMatch) return true;
+            if (!minMatch && maxMatch) return true;
+            return false;
 
-            return range.min <= count && count <= range.max;
         }
 
         public static (int min, int max) BuildRange(string[] list)
