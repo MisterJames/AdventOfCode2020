@@ -30,12 +30,7 @@ namespace AoC2020
 
                 curPos.y += down;
                 curPos.x += right;
-
-                // correct for bounds
-                if (curPos.x >= patternWidth)
-                {
-                    curPos.x -= patternWidth;
-                }
+                curPos.x %= patternWidth;
 
             }
 

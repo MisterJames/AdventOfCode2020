@@ -11,36 +11,53 @@ namespace AoC2020
 
         public string SolvePuzzle(string puzzleData)
         {
-            var treeCount = 0;
             var treeLines = puzzleData.Split("\n", StringSplitOptions.RemoveEmptyEntries).ToList();
             var patternWidth = treeLines[0].Length;
 
-            var down = 1;
-            var right = 3;
+            var slopes = new List<(int, int)>();
+            slopes.Add((1, 1));
+            slopes.Add((1, 3));
+            slopes.Add((1, 5));
+            slopes.Add((1, 7));
+            slopes.Add((2, 1));
 
-            (int x, int y) curPos = (0, 0);
+            var results = new List<int>();
+
+            foreach (var slope in slopes)
+            {
+                results.Add(GetHitCount(treeLines, patternWidth, slope.Item1, slope.Item2));
+            }
+
+            var treeCount = results.Aggregate((x, y) => x * y);
+
+            return $"There was a result of {treeCount}";
+        }
+
+        private static int GetHitCount(List<string> treeLines, int patternWidth, int down, int right)
+        {
+            var treeCount = 0;
+            (int x, int y) = (0, 0);
 
             // I don't need both a down and an i but i like it and it'll be my Christmas present to myself
-            for (int i = 0; i < treeLines.Count; i+=down)
+            for (int i = 0; i < treeLines.Count; i += down)
             {
-                if (treeLines[curPos.y][curPos.x] == "#"[0])
+                if (treeLines[y][x] == "#"[0])
                 {
                     treeCount++;
                 }
 
-                curPos.y += down;
-                curPos.x += right;
+                y += down;
+                x += right;
 
                 // correct for bounds
-                if (curPos.x >= patternWidth)
+                if (x >= patternWidth)
                 {
-                    curPos.x -= patternWidth;
+                    x -= patternWidth;
                 }
 
             }
 
-            return $"There were {treeCount} trees encountered";            
+            return treeCount;
         }
-
     }
 }

@@ -23,6 +23,7 @@ namespace AoC2020
             //Console.WriteLine("Day 2b:  " + new Day02b().SolvePuzzle(await downloader.Download("https://adventofcode.com/2020/day/2/input")));
 
             Console.WriteLine("Day 3:  " + new Day03().SolvePuzzle(await downloader.Download("https://adventofcode.com/2020/day/3/input")));
+            Console.WriteLine("Day 3b:  " + new Day03b().SolvePuzzle(await downloader.Download("https://adventofcode.com/2020/day/3/input")));
 
         }
 
